@@ -107,7 +107,7 @@
     </section>
 
     <!-- ========================================
-         ABOUT SECTION (SUDAH DIUPDATE DENGAN CV)
+         ABOUT SECTION (TANPA PREVIEW CV)
     ======================================== -->
     <section id="about">
         <div class="section-header reveal">
@@ -129,33 +129,10 @@
                     When I'm not coding, you'll find me exploring new technologies, contributing to
                     open-source projects, or sharing knowledge with the developer community.
                 </p>
-
-                <!-- === CV PREVIEW SECTION (BARU) === -->
-                <div class="cv-preview-section">
-                    <h4 class="cv-preview-title">
-                        <i class="fas fa-file-alt"></i> My Curriculum Vitae
-                    </h4>
-                    <div class="cv-preview-card">
-                        <div class="cv-image-wrapper" onclick="openCVPreview()">
-                            <img src="CV SISWA GIBRAN.png" alt="CV Muhamad Gibran Kusniadi" class="cv-preview-img">
-                            <div class="cv-image-overlay">
-                                <i class="fas fa-search-plus"></i>
-                                <span>Click to View</span>
-                            </div>
-                        </div>
-                        <div class="cv-actions">
-                            <a href="CV SISWA GIBRAN.png" download="CV_Muhamad_Gibran_Kusniadi.png" class="cv-btn">
-                                <i class="fas fa-download"></i> Download CV
-                            </a>
-                            <button onclick="openCVPreview()" class="cv-view-btn">
-                                <i class="fas fa-eye"></i> View Full
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tombol View Projects (tetap ada) -->
                 <div class="cv-download-section">
+                    <a href="CV SISWA GIBRAN.png" download="CV_Muhamad_Gibran_Kusniadi.png" class="cv-btn">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
                     <a href="#portfolio" class="projects-btn">
                         <i class="fas fa-briefcase"></i> View Projects
                     </a>
@@ -169,29 +146,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ========================================
-         CV PREVIEW MODAL (BARU)
-    ======================================== -->
-    <div id="cvModal" class="cv-modal">
-        <div class="cv-modal-content">
-            <button class="cv-modal-close" onclick="closeCVPreview()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="cv-modal-header">
-                <h2><i class="fas fa-file-alt"></i> Curriculum Vitae</h2>
-                <p>Muhamad Gibran Kusniadi</p>
-            </div>
-            <div class="cv-modal-body">
-                <img src="CV SISWA GIBRAN.png" alt="CV Muhamad Gibran Kusniadi" class="cv-full-img">
-            </div>
-            <div class="cv-modal-footer">
-                <a href="CV SISWA GIBRAN.png" download="CV_Muhamad_Gibran_Kusniadi.png" class="cv-download-btn">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- ========================================
          PORTFOLIO SECTION
