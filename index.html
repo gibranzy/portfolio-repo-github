@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-icons">
+            <div class="welcome-icon"><i class="fas fa-code"></i></div>
+            <div class="welcome-icon"><i class="fas fa-user"></i></div>
+            <div class="welcome-icon"><i class="fas fa-globe"></i></div>
+        </div>
+        <div class="welcome-text">
+            <h1>Welcome to my</h1>
+            <h2>Portfolio Website</h2>
+            <div class="welcome-url">www.gibran.vercel.app</div>
+        </div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Gibran.com</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <div class="badge">👋 Welcome to My Portfolio</div>
+            <h1>Frontend Developer</h1>
+            <div class="typing-container">
+                I build <span class="typing-text" id="typing"></span>
+            </div>
+            <p class="home-description">
+                Passionate programmer who loves creating elegant solutions to complex problems.
+                Specialized in building modern web applications with cutting-edge technologies.
+            </p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+            </div>
+        </div>
+        <div class="home-lanyard-wrapper">
+            <div class="lanyard-container">
+                <div class="lanyard-strap"></div>
+                <div class="breakaway-clip"></div>
+                <div class="metal-hook"></div>
+                <div class="id-card-holder">
+                    <div class="card-slot"></div>
+                    <div class="id-card-content">
+                        <div class="id-photo-wrapper">
+                            <img src="ibum2.jpeg" alt="Muhamad Gibran Kusniadi">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header reveal">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-container reveal">
+            <div class="about-content">
+                <h3>
+                    <span class="greeting">Hello, I'm</span><br>
+                    <span class="name">Muhamad Gibran Kusniadi</span>
+                </h3>
+                <p>
+                    I am a Software Engineering student with a disciplined and detail-oriented approach to development. 
+                    I pride myself on my ability to write clean, maintainable code and my commitment to meeting project deadlines. 
+                    I am a collaborative team player who values constructive feedback and is dedicated to contributing technical solutions
+                     that align with organizational goals.
+                </p>
+                <p>
+                    When I'm not coding, you'll find me exploring new technologies, contributing to
+                    open-source projects, or sharing knowledge with the developer community.
+                </p>
+                <div class="cv-download-section">
+                    <a href="your-cv.pdf" download class="cv-btn">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="#portfolio" class="projects-btn">
+                        <i class="fas fa-briefcase"></i> View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="about-image-wrapper">
+                <div class="about-photo-circle">
+                    <img src="ibum2.jpeg" alt="Muhamad Gibran Kusniadi">
+                    <div class="about-photo-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-header reveal">
+            <h2>Portfolio Showcase</h2>
+            <p>Explore my projects and technical skills</p>
+        </div>
+        <div class="portfolio-tabs reveal">
+            <button class="tab-btn active" onclick="switchTab('projects')">
+                <i class="fas fa-code"></i> Projects
+            </button>
+            <button class="tab-btn" onclick="switchTab('skills')">
+                <i class="fas fa-laptop-code"></i> Skills
+            </button>
+        </div>
+
+        <div id="projects" class="tab-content active">
+            <div class="projects-grid">
+                <div class="project-card reveal" onclick="openProjectModal('ecommerce')">
+                    <div class="project-image">
+                        <img src="project-ecommerce.jpg" alt="E-Commerce Platform" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shopping-cart\'></i>'">
+                        <div class="project-image-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with payment gateway integration.</p>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" onclick="openProjectModal('taskapp')">
+                    <div class="project-image">
+                        <img src="project-taskapp.jpg" alt="Task Management App" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tasks\'></i>'">
+                        <div class="project-image-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>Collaborative task management with real-time updates.</p>
+                        <div class="project-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" onclick="openProjectModal('analytics')">
+                    <div class="project-image">
+                        <img src="project-analytics.jpg" alt="Analytics Dashboard" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-chart-line\'></i>'">
+                        <div class="project-image-overlay">
+                            <span class="view-project-text">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Data visualization dashboard with interactive charts.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="tab-content">
+            <div class="skills-grid-container">
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon php"><i class="fab fa-php"></i></div>
+                    <div class="skill-name-label">PHP</div>
+                </div>
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon laravel"><i class="fab fa-laravel"></i></div>
+                    <div class="skill-name-label">Laravel</div>
+                </div>
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon javascript"><i class="fab fa-js"></i></div>
+                    <div class="skill-name-label">JavaScript</div>
+                </div>
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon html5"><i class="fab fa-html5"></i></div>
+                    <div class="skill-name-label">HTML5</div>
+                </div>
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon mysql"><i class="fas fa-database"></i></div>
+                    <div class="skill-name-label">MySQL</div>
+                </div>
+                <div class="skill-icon-card reveal">
+                    <div class="skill-icon css3"><i class="fab fa-css3-alt"></i></div>
+                    <div class="skill-name-label">CSS3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox for Gallery Images -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-prev" onclick="changeImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" class="lightbox-img" src="" alt="Project Screenshot">
+            <a href="#" id="lightboxDemoBtn" class="lightbox-demo-btn" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+        </div>
+        <button class="lightbox-next" onclick="changeImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container reveal">
+            <div class="contact-header">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div>
+                        <h3>Let's Talk</h3>
+                        <p>Have a question or want to work together? Feel free to reach out.</p>
+                    </div>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div><h4>Email</h4><p>your.email@example.com</p></div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><h4>Location</h4><p>Your City, Indonesia</p></div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <div><h4>Availability</h4><p>Mon - Fri: 9AM - 6PM</p></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Follow Me</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/gibranzy" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section about">
+                    <div class="logo">Gibran.com</div>
+                    <p>Passionate Full Stack Developer creating modern and responsive web applications.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/gibranzy" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> your.email@example.com</p>
+                    <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Your City, Indonesia</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Your Name. All rights reserved.</p>
+                <ul class="footer-bottom-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
