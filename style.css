@@ -684,6 +684,25 @@ section { padding: 6rem 5%; }
     transition: transform 0.3s ease;
 }
 .project-card:hover .project-image img { transform: scale(1.1); }
+
+/* Project Card dengan Icon (untuk Task Management App) */
+.project-icon-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+}
+.project-icon-card i {
+    font-size: 5rem;
+    color: var(--accent-primary);
+    filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.5));
+    transition: all 0.3s ease;
+}
+.project-card:hover .project-icon-card i {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.8));
+}
+
 .project-image-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -1410,6 +1429,11 @@ footer::before {
         gap: 1.5rem;
     }
     
+    /* Project Icon Card Mobile */
+    .project-icon-card i {
+        font-size: 4rem;
+    }
+    
     /* Skills Mobile */
     .skills-grid-container {
         grid-template-columns: repeat(2, 1fr);
@@ -1564,6 +1588,11 @@ footer::before {
     
     .skill-name-label {
         font-size: 0.9rem;
+    }
+    
+    /* Project Icon Card Small Mobile */
+    .project-icon-card i {
+        font-size: 3.5rem;
     }
     
     section {
