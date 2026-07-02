@@ -1,5 +1,5 @@
 // ========================================
-// PROJECT DATA
+// PROJECT DATA (SUDAH DIUBAH KE ICON)
 // ========================================
 const projectsData = {
     ecommerce: {
@@ -7,7 +7,8 @@ const projectsData = {
         description: 'A comprehensive full-stack e-commerce solution featuring product management, shopping cart functionality, secure payment gateway integration.',
         longDescription: 'This e-commerce platform was developed to provide businesses with a complete online selling solution. The system includes features such as product catalog management with categories and filters, advanced search functionality, secure user authentication and authorization, shopping cart with wishlist, multiple payment gateway integration, real-time order tracking, inventory management, and a comprehensive admin dashboard.',
         technologies: ['Laravel', 'MySQL', 'JavaScript', 'Bootstrap', 'Midtrans API', 'jQuery'],
-        mainImage: 'project-ecommerce-main.jpg',
+        icon: 'fas fa-shopping-cart',
+        mainImage: null,
         gallery: [
             { image: 'project-ecommerce-1.jpg', demo: 'https://ecommerce-demo1.example.com', title: 'Halaman Utama' },
             { image: 'project-ecommerce-2.jpg', demo: 'https://ecommerce-demo2.example.com', title: 'Halaman Produk' },
@@ -21,7 +22,8 @@ const projectsData = {
         description: 'A collaborative task management application with real-time updates, team collaboration features, task assignment, deadline tracking.',
         longDescription: 'This task management application helps teams organize, track, and manage their work more effectively. Key features include creating and assigning tasks to team members, setting priorities and deadlines, real-time notifications and updates, file attachments and comments, progress tracking with visual charts.',
         technologies: ['PHP', 'MySQL', 'CSS3', 'JavaScript', 'WebSocket', 'Chart.js'],
-        mainImage: 'perpustakaan.jpeg',
+        icon: 'fas fa-tasks',
+        mainImage: null,
         gallery: [
             { image: 'perpustakaan.jpeg', demo: 'https://perpustakaan-digital.example.com', title: 'Perpustakaan Digital' },
             { image: 'project-taskapp-2.jpg', demo: 'https://taskapp-demo2.example.com', title: 'Task Board' },
@@ -34,7 +36,8 @@ const projectsData = {
         description: 'An interactive data visualization dashboard featuring real-time analytics, customizable charts and graphs, data export functionality.',
         longDescription: 'This analytics dashboard provides businesses with powerful data visualization and reporting capabilities. The system features real-time data updates, interactive charts using D3.js and Chart.js, customizable dashboard widgets, data filtering and segmentation, automated report generation.',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'D3.js', 'Chart.js', 'PHP'],
-        mainImage: 'project-analytics-main.jpg',
+        icon: 'fas fa-chart-line',
+        mainImage: null,
         gallery: [
             { image: 'project-analytics-1.jpg', demo: 'https://analytics-demo1.example.com', title: 'Dashboard Overview' },
             { image: 'project-analytics-2.jpg', demo: 'https://analytics-demo2.example.com', title: 'Reports' },
@@ -126,7 +129,6 @@ if (hamburger && navLinks) {
         });
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
@@ -153,7 +155,7 @@ function switchTab(tabName) {
 }
 
 // ========================================
-// PROJECT MODAL FUNCTIONS
+// PROJECT MODAL FUNCTIONS (SUDAH DIUBAH KE ICON)
 // ========================================
 function openProjectModal(projectId) {
     const project = projectsData[projectId];
@@ -177,10 +179,27 @@ function openProjectModal(projectId) {
         </div>
     `).join('');
 
+    // === HEADER: ICON atau GAMBAR ===
+    let headerHTML = '';
+    
+    if (project.icon) {
+        // Tampilkan ICON di header modal
+        headerHTML = `
+            <div class="modal-header-icon">
+                <i class="${project.icon}"></i>
+            </div>
+        `;
+    } else if (project.mainImage) {
+        // Tampilkan GAMBAR di header modal
+        headerHTML = `
+            <div class="modal-header-image">
+                <img src="${project.mainImage}" alt="${project.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221200%22 height=%22600%22%3E%3Crect fill=%22%231a1a2e%22 width=%221200%22 height=%22600%22/%3E%3Ctext fill=%22%2300d9ff%22 font-family=%22Arial%22 font-size=%2240%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
+            </div>
+        `;
+    }
+
     modalBody.innerHTML = `
-        <div class="modal-header-image">
-            <img src="${project.mainImage}" alt="${project.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221200%22 height=%22600%22%3E%3Crect fill=%22%231a1a2e%22 width=%221200%22 height=%22600%22/%3E%3Ctext fill=%22%2300d9ff%22 font-family=%22Arial%22 font-size=%2240%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
-        </div>
+        ${headerHTML}
         <div class="modal-info">
             <h2>${project.title}</h2>
             <p>${project.longDescription}</p>
@@ -263,7 +282,6 @@ function changeImage(direction) {
 // MODAL & LIGHTBOX EVENT LISTENERS
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Close modal when clicking outside
     const projectModal = document.getElementById('projectModal');
     if (projectModal) {
         projectModal.addEventListener('click', function(e) {
@@ -271,7 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close lightbox when clicking outside
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
         lightbox.addEventListener('click', function(e) {
@@ -280,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Close modal/lightbox with ESC key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeProjectModal();
@@ -288,7 +304,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Navigate lightbox with arrow keys
 document.addEventListener('keydown', function(e) {
     const lightbox = document.getElementById('lightbox');
     if (lightbox && lightbox.classList.contains('active')) {
@@ -314,7 +329,6 @@ function reveal() {
 
 window.addEventListener('scroll', reveal);
 
-// Initial reveal check
 document.addEventListener('DOMContentLoaded', () => {
     reveal();
 });
@@ -376,21 +390,19 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            // Skip if href is just "#"
             if (href === '#') return;
             
             e.preventDefault();
             
             const target = document.querySelector(href);
             if (target) {
-                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                const offsetTop = target.offsetTop - 80;
                 
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
                 
-                // Close mobile menu if open
                 const navLinks = document.getElementById('navLinks');
                 const hamburger = document.getElementById('hamburger');
                 if (navLinks && navLinks.classList.contains('active')) {
@@ -405,7 +417,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 // PERFORMANCE OPTIMIZATION
 // ========================================
-// Lazy loading images
 if ('loading' in HTMLImageElement.prototype) {
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
