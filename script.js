@@ -1,4 +1,6 @@
-// Project Data
+// ========================================
+// PROJECT DATA
+// ========================================
 const projectsData = {
     ecommerce: {
         title: 'E-Commerce Platform',
@@ -46,19 +48,28 @@ const projectsData = {
 let currentGalleryImages = [];
 let currentImageIndex = 0;
 
-// Welcome Screen Animation
+// ========================================
+// WELCOME SCREEN ANIMATION
+// ========================================
 window.addEventListener('load', () => {
     setTimeout(() => {
-        document.getElementById('welcomeScreen').classList.add('slide-down');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        if (welcomeScreen) {
+            welcomeScreen.classList.add('slide-down');
+        }
     }, 5000);
 });
 
-// Typing Animation
+// ========================================
+// TYPING ANIMATION
+// ========================================
 const texts = ['Web Applications', 'Mobile Apps', 'Database Systems', 'API Integrations', 'Modern UI/UX'];
 let textIndex = 0, charIndex = 0, isDeleting = false;
 const typingElement = document.getElementById('typing');
 
 function type() {
+    if (!typingElement) return;
+    
     const currentText = texts[textIndex];
     if (isDeleting) {
         typingElement.textContent = currentText.substring(0, charIndex - 1);
@@ -67,46 +78,90 @@ function type() {
         typingElement.textContent = currentText.substring(0, charIndex + 1);
         charIndex++;
     }
+    
     let typeSpeed = isDeleting ? 50 : 100;
+    
     if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; isDeleting = true;
+        typeSpeed = 2000;
+        isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % texts.length;
         typeSpeed = 500;
     }
+    
     setTimeout(type, typeSpeed);
 }
-type();
 
-// Navbar Scroll
+if (typingElement) {
+    type();
+}
+
+// ========================================
+// NAVBAR SCROLL EFFECT
+// ========================================
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+}
 
-// Mobile Menu
+// ========================================
+// MOBILE MENU
+// ========================================
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('active'));
-});
 
-// Tab Switching
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+}
+
+// ========================================
+// TAB SWITCHING
+// ========================================
 function switchTab(tabName) {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById(tabName).classList.add('active');
+    
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+    
+    const tabContent = document.getElementById(tabName);
+    if (tabContent) {
+        tabContent.classList.add('active');
+    }
 }
 
-// Project Modal Functions
+// ========================================
+// PROJECT MODAL FUNCTIONS
+// ========================================
 function openProjectModal(projectId) {
     const project = projectsData[projectId];
     if (!project) return;
 
     const modalBody = document.getElementById('modalBody');
+    if (!modalBody) return;
+    
     currentGalleryImages = project.gallery;
 
     const galleryHTML = project.gallery.map((item, index) => `
@@ -143,22 +198,30 @@ function openProjectModal(projectId) {
     `;
 
     const modal = document.getElementById('projectModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
-// Lightbox Functions
+// ========================================
+// LIGHTBOX FUNCTIONS
+// ========================================
 function openLightbox(index) {
     currentImageIndex = index;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxDemoBtn = document.getElementById('lightboxDemoBtn');
+
+    if (!lightbox || !lightboxImg || !lightboxDemoBtn) return;
 
     const currentItem = currentGalleryImages[index];
     lightboxImg.src = currentItem.image;
@@ -170,7 +233,9 @@ function openLightbox(index) {
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+    }
 }
 
 function changeImage(direction) {
@@ -184,6 +249,9 @@ function changeImage(direction) {
 
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxDemoBtn = document.getElementById('lightboxDemoBtn');
+    
+    if (!lightboxImg || !lightboxDemoBtn) return;
+    
     const currentItem = currentGalleryImages[currentImageIndex];
 
     lightboxImg.src = currentItem.image;
@@ -191,14 +259,25 @@ function changeImage(direction) {
     lightboxDemoBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> Live Demo - ${currentItem.title}`;
 }
 
-// Close modal when clicking outside
-document.getElementById('projectModal').addEventListener('click', function(e) {
-    if (e.target === this) closeProjectModal();
-});
+// ========================================
+// MODAL & LIGHTBOX EVENT LISTENERS
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Close modal when clicking outside
+    const projectModal = document.getElementById('projectModal');
+    if (projectModal) {
+        projectModal.addEventListener('click', function(e) {
+            if (e.target === this) closeProjectModal();
+        });
+    }
 
-// Close lightbox when clicking outside
-document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
+    // Close lightbox when clicking outside
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+    }
 });
 
 // Close modal/lightbox with ESC key
@@ -212,59 +291,154 @@ document.addEventListener('keydown', function(e) {
 // Navigate lightbox with arrow keys
 document.addEventListener('keydown', function(e) {
     const lightbox = document.getElementById('lightbox');
-    if (lightbox.classList.contains('active')) {
+    if (lightbox && lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') changeImage(-1);
         else if (e.key === 'ArrowRight') changeImage(1);
     }
 });
 
-// Scroll Reveal
+// ========================================
+// SCROLL REVEAL ANIMATION
+// ========================================
 function reveal() {
     document.querySelectorAll('.reveal').forEach(el => {
         const windowHeight = window.innerHeight;
         const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 150) el.classList.add('active');
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            el.classList.add('active');
+        }
     });
 }
+
 window.addEventListener('scroll', reveal);
-reveal();
 
-// Back to Top
+// Initial reveal check
+document.addEventListener('DOMContentLoaded', () => {
+    reveal();
+});
+
+// ========================================
+// BACK TO TOP BUTTON
+// ========================================
 const backToTopBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-    backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
-});
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
-// Contact Form
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
-    console.log('Form Data:', formData);
-    const submitBtn = this.querySelector('.submit-btn');
-    const originalContent = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-    this.reset();
-    setTimeout(() => {
-        submitBtn.innerHTML = originalContent;
-        submitBtn.style.background = '';
-    }, 3000);
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
     });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ========================================
+// CONTACT FORM
+// ========================================
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name')?.value || '',
+            email: document.getElementById('email')?.value || '',
+            subject: document.getElementById('subject')?.value || '',
+            message: document.getElementById('message')?.value || ''
+        };
+        
+        console.log('Form Data:', formData);
+        
+        const submitBtn = this.querySelector('.submit-btn');
+        if (submitBtn) {
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            this.reset();
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalContent;
+                submitBtn.style.background = '';
+            }, 3000);
+        }
+    });
+}
+
+// ========================================
+// SMOOTH SCROLL
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#"
+            if (href === '#') return;
+            
+            e.preventDefault();
+            
+            const target = document.querySelector(href);
+            if (target) {
+                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const navLinks = document.getElementById('navLinks');
+                const hamburger = document.getElementById('hamburger');
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    if (hamburger) hamburger.classList.remove('active');
+                }
+            }
+        });
+    });
+});
+
+// ========================================
+// PERFORMANCE OPTIMIZATION
+// ========================================
+// Lazy loading images
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
+    });
+}
+
+// ========================================
+// TOUCH DEVICE DETECTION
+// ========================================
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+}
+
+if (isTouchDevice()) {
+    document.body.classList.add('touch-device');
+}
+
+// ========================================
+// ERROR HANDLING
+// ========================================
+window.addEventListener('error', (e) => {
+    console.error('Error:', e.error);
+});
+
+// ========================================
+// INITIALIZATION COMPLETE
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Portfolio loaded successfully! 🚀');
+    console.log('Touch device:', isTouchDevice());
 });
