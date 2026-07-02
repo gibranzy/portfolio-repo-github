@@ -1305,11 +1305,22 @@ footer::before {
     .nav-links.active { right: 0; }
     .hamburger { display: flex; }
     
-    /* Hero Section Mobile */
+    /* Hero Section Mobile - FOTO DI ATAS */
     #home {
         grid-template-columns: 1fr;
         padding: 6rem 5% 3rem;
         gap: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Pindahkan foto ke atas dengan order */
+    .home-lanyard-wrapper {
+        order: -1; /* Muncul pertama/ di atas */
+        position: relative;
+        right: auto;
+        top: auto;
+        margin: 0 auto 2rem;
     }
     
     .home-content {
@@ -1342,13 +1353,6 @@ footer::before {
         width: 100%;
         max-width: 300px;
         justify-content: center;
-    }
-    
-    .home-lanyard-wrapper {
-        position: relative;
-        right: auto;
-        top: auto;
-        margin: 2rem auto;
     }
     
     .badge {
