@@ -183,14 +183,12 @@ function openProjectModal(projectId) {
     let headerHTML = '';
     
     if (project.icon) {
-        // Tampilkan ICON di header modal
         headerHTML = `
             <div class="modal-header-icon">
                 <i class="${project.icon}"></i>
             </div>
         `;
     } else if (project.mainImage) {
-        // Tampilkan GAMBAR di header modal
         headerHTML = `
             <div class="modal-header-image">
                 <img src="${project.mainImage}" alt="${project.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221200%22 height=%22600%22%3E%3Crect fill=%22%231a1a2e%22 width=%221200%22 height=%22600%22/%3E%3Ctext fill=%22%2300d9ff%22 font-family=%22Arial%22 font-size=%2240%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${encodeURIComponent(project.title)}%3C/text%3E%3C/svg%3E'">
@@ -227,6 +225,25 @@ function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     if (modal) {
         modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// ========================================
+// CV PREVIEW MODAL FUNCTIONS (BARU)
+// ========================================
+function openCVPreview() {
+    const cvModal = document.getElementById('cvModal');
+    if (cvModal) {
+        cvModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeCVPreview() {
+    const cvModal = document.getElementById('cvModal');
+    if (cvModal) {
+        cvModal.classList.remove('active');
         document.body.style.overflow = '';
     }
 }
@@ -295,15 +312,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === this) closeLightbox();
         });
     }
+
+    // CV Modal Event Listener (BARU)
+    const cvModal = document.getElementById('cvModal');
+    if (cvModal) {
+        cvModal.addEventListener('click', function(e) {
+            if (e.target === this) closeCVPreview();
+        });
+    }
 });
 
+// Close modal/lightbox/CV with ESC key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeProjectModal();
         closeLightbox();
+        closeCVPreview();
     }
 });
 
+// Navigate lightbox with arrow keys
 document.addEventListener('keydown', function(e) {
     const lightbox = document.getElementById('lightbox');
     if (lightbox && lightbox.classList.contains('active')) {
