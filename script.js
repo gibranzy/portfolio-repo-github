@@ -230,25 +230,6 @@ function closeProjectModal() {
 }
 
 // ========================================
-// CV PREVIEW MODAL FUNCTIONS (BARU)
-// ========================================
-function openCVPreview() {
-    const cvModal = document.getElementById('cvModal');
-    if (cvModal) {
-        cvModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeCVPreview() {
-    const cvModal = document.getElementById('cvModal');
-    if (cvModal) {
-        cvModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// ========================================
 // LIGHTBOX FUNCTIONS
 // ========================================
 function openLightbox(index) {
@@ -312,22 +293,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === this) closeLightbox();
         });
     }
-
-    // CV Modal Event Listener (BARU)
-    const cvModal = document.getElementById('cvModal');
-    if (cvModal) {
-        cvModal.addEventListener('click', function(e) {
-            if (e.target === this) closeCVPreview();
-        });
-    }
 });
 
-// Close modal/lightbox/CV with ESC key
+// Close modal/lightbox with ESC key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeProjectModal();
         closeLightbox();
-        closeCVPreview();
     }
 });
 
