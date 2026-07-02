@@ -2,14 +2,25 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Full Stack Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Portfolio Muhamad Gibran Kusniadi - Full Stack Developer">
+    <meta name="keywords" content="portfolio, web developer, frontend, backend, full stack">
+    <meta name="author" content="Muhamad Gibran Kusniadi">
+    <title>Portfolio | Muhamad Gibran Kusniadi - Full Stack Developer</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Welcome Screen -->
+    <!-- ========================================
+         WELCOME SCREEN
+    ======================================== -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-icons">
             <div class="welcome-icon"><i class="fas fa-code"></i></div>
@@ -26,17 +37,21 @@
         </div>
     </div>
 
-    <!-- Background Animation -->
+    <!-- ========================================
+         BACKGROUND ANIMATION
+    ======================================== -->
     <div class="bg-animation">
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>
     </div>
 
-    <!-- Navbar -->
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Gibran.com</a>
+            <a href="#home" class="logo">Gibran.com</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Me</a></li>
@@ -44,16 +59,20 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Home Section -->
+    <!-- ========================================
+         HOME SECTION
+    ======================================== -->
     <section id="home">
         <div class="home-content">
             <div class="badge">👋 Welcome to My Portfolio</div>
-            <h1>Frontend Developer</h1>
+            <h1>Frontend <span>Developer</span></h1>
             <div class="typing-container">
                 I build <span class="typing-text" id="typing"></span>
             </div>
@@ -87,7 +106,9 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ========================================
+         ABOUT SECTION
+    ======================================== -->
     <section id="about">
         <div class="section-header reveal">
             <h2>About Me</h2>
@@ -126,7 +147,9 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- ========================================
+         PORTFOLIO SECTION
+    ======================================== -->
     <section id="portfolio">
         <div class="section-header reveal">
             <h2>Portfolio Showcase</h2>
@@ -141,8 +164,10 @@
             </button>
         </div>
 
+        <!-- Projects Tab -->
         <div id="projects" class="tab-content active">
             <div class="projects-grid">
+                <!-- E-Commerce Project -->
                 <div class="project-card reveal" onclick="openProjectModal('ecommerce')">
                     <div class="project-image">
                         <img src="project-ecommerce.jpg" alt="E-Commerce Platform" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shopping-cart\'></i>'">
@@ -160,9 +185,11 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Task Management Project -->
                 <div class="project-card reveal" onclick="openProjectModal('taskapp')">
                     <div class="project-image">
-                        <img src="project-taskapp.jpg" alt="Task Management App" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tasks\'></i>'">
+                        <img src="perpustakaan.jpeg" alt="Task Management App" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tasks\'></i>'">
                         <div class="project-image-overlay">
                             <span class="view-project-text">View Project</span>
                         </div>
@@ -177,6 +204,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Analytics Project -->
                 <div class="project-card reveal" onclick="openProjectModal('analytics')">
                     <div class="project-image">
                         <img src="project-analytics.jpg" alt="Analytics Dashboard" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-chart-line\'></i>'">
@@ -197,6 +226,7 @@
             </div>
         </div>
 
+        <!-- Skills Tab -->
         <div id="skills" class="tab-content">
             <div class="skills-grid-container">
                 <div class="skill-icon-card reveal">
@@ -227,7 +257,9 @@
         </div>
     </section>
 
-    <!-- Project Modal -->
+    <!-- ========================================
+         PROJECT MODAL
+    ======================================== -->
     <div id="projectModal" class="project-modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProjectModal()">
@@ -237,7 +269,9 @@
         </div>
     </div>
 
-    <!-- Lightbox for Gallery Images -->
+    <!-- ========================================
+         LIGHTBOX
+    ======================================== -->
     <div id="lightbox" class="lightbox">
         <button class="lightbox-close" onclick="closeLightbox()">
             <i class="fas fa-times"></i>
@@ -256,13 +290,16 @@
         </button>
     </div>
 
-    <!-- Contact Section -->
+    <!-- ========================================
+         CONTACT SECTION
+    ======================================== -->
     <section id="contact">
         <div class="contact-container reveal">
             <div class="contact-header">
                 <h2>Get In Touch</h2>
             </div>
             <div class="contact-grid">
+                <!-- Contact Form -->
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
                     <form id="contactForm" action="#" method="POST">
@@ -287,6 +324,8 @@
                         </button>
                     </form>
                 </div>
+
+                <!-- Contact Info -->
                 <div class="contact-info">
                     <div>
                         <h3>Let's Talk</h3>
@@ -295,24 +334,41 @@
                     <div class="contact-methods">
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <div><h4>Email</h4><p>your.email@example.com</p></div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>your.email@example.com</p>
+                            </div>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div><h4>Location</h4><p>Your City, Indonesia</p></div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Your City, Indonesia</p>
+                            </div>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-clock"></i>
-                            <div><h4>Availability</h4><p>Mon - Fri: 9AM - 6PM</p></div>
+                            <div>
+                                <h4>Availability</h4>
+                                <p>Mon - Fri: 9AM - 6PM</p>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <h3>Follow Me</h3>
                         <div class="social-links">
-                            <a href="https://github.com/gibranzy" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://github.com/gibranzy" target="_blank" class="social-link" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -320,20 +376,33 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
     <footer>
         <div class="footer-container">
             <div class="footer-grid">
+                <!-- About Section -->
                 <div class="footer-section about">
                     <div class="logo">Gibran.com</div>
                     <p>Passionate Full Stack Developer creating modern and responsive web applications.</p>
                     <div class="footer-social">
-                        <a href="https://github.com/gibranzy" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/gibranzy" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/gibran-kusniadi-5462a93b3/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/b4mibamm?igsh=enJpOW4wczBuMngz" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
+
+                <!-- Quick Links -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -343,6 +412,8 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
+
+                <!-- Services -->
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul class="footer-links">
@@ -352,6 +423,8 @@
                         <li><a href="#">Consulting</a></li>
                     </ul>
                 </div>
+
+                <!-- Contact Info -->
                 <div class="footer-section footer-contact">
                     <h3>Contact Info</h3>
                     <p><i class="fas fa-envelope"></i> your.email@example.com</p>
@@ -359,19 +432,24 @@
                     <p><i class="fas fa-map-marker-alt"></i> Your City, Indonesia</p>
                 </div>
             </div>
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2024 Your Name. All rights reserved.</p>
+                <p>&copy; 2024 Muhamad Gibran Kusniadi. All rights reserved.</p>
                 <ul class="footer-bottom-links">
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
-        <button class="back-to-top" id="backToTop">
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop" aria-label="Back to Top">
             <i class="fas fa-arrow-up"></i>
         </button>
     </footer>
 
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
